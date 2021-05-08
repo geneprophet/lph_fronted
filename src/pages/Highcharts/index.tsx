@@ -3,9 +3,9 @@ import styles from './index.less';
 import { render } from 'react-dom';
 import HighchartsReact from 'highcharts-react-official';
 // import Highcharts from 'highcharts';
-import Highcharts from 'highcharts/highcharts';
-window.Highcharts = Highcharts;
-export default class LineChart extends Component {
+import Highcharts from 'highcharts/modules/sankey';
+// window.Highcharts = Highcharts;
+export default class Chart extends Component {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -70,7 +70,7 @@ export default class LineChart extends Component {
           },
         ],
       },
-      // hoverData: null,
+      hoverData: null,
     };
   }
 
