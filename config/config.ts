@@ -1,5 +1,5 @@
-import {defineConfig} from "umi";
-import routes from "./routes";
+import { defineConfig } from 'umi';
+import routes from './routes';
 
 export default defineConfig({
   routes: routes,
@@ -14,4 +14,5 @@ export default defineConfig({
     baseNavigator: true,
     baseSeparator: '-',
   },
-})
+  hash: true,
+});
