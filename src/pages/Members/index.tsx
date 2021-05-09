@@ -1,11 +1,26 @@
 import React from 'react';
 import styles from './index.less';
-import FormRegister from '../../components/FormRegister';
+import {Avatar, Card} from "antd";
 export default function Page(props: any) {
   return (
     <div>
       <h1 className={styles.title}>Page Members/index</h1>
-      <FormRegister />
+      <Card>
+        <Avatar shape="square" size={100} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+        <div className={styles.name}>Peiling Jia</div>
+      </Card>
+      <Card>
+        <Avatar shape="square" size={100} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+        <div className={styles.name}>Peiling Jia</div>
+      </Card>
+      <Card>
+        <Avatar shape="square" size={100} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+        <div className={styles.name}>Peiling Jia</div>
+      </Card>
+      <Card>
+        <Avatar shape="square" size={100} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+        <div className={styles.name}>Peiling Jia</div>
+      </Card>
     </div>
   );
 }

@@ -45,6 +45,7 @@
     "@umijs/preset-ui": "^2.2.9",
     "@umijs/test": "^3.4.14",
     "lint-staged": "^10.0.7",
+    "mini-css-extract-plugin": "^1.6.0",
     "prettier": "^2.2.0",
     "react": "17.x",
     "react-dom": "17.x",
