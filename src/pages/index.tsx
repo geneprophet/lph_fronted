@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './index.less';
-import Table from './Table';
+import Table from './Table/index';
 import TableHead from './TableHead';
 export default function Page() {
   return (

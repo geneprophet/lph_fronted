@@ -56,7 +56,7 @@ export default [
         component: '@/pages/Highcharts',
       },
       {
-        path: '/h',
+        path: '/test',
         component: '@/pages/Test',
       },
     ],

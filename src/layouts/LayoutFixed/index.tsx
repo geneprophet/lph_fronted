@@ -9,7 +9,7 @@ export default (props: any) => (
     <CarouselAutoplay />
     <div id="components-layout-demo-fixed">
       <Layout>
-        <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+        <Header style={{ zIndex: 1, width: '100%' }}>
           <div className="logo" />
           <Menu
             theme="dark"
@@ -43,7 +43,7 @@ export default (props: any) => (
             </Menu.Item>
           </Menu>
         </Header>
-        r
+
         <Content
           className="site-layout"
           style={{ padding: '0 50px', marginTop: 64 }}
