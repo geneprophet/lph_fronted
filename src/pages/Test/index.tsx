@@ -27,7 +27,7 @@ export default class LineChart extends Component {
       hoverData: null,
     };
   }
-
+  // @ts-ignore
   setHoverData = (e) => {
     // 图表没有更新，因为 'chartOptions' 没有改变
     this.setState({ hoverData: e.target.category });
@@ -43,6 +43,7 @@ export default class LineChart extends Component {
   };
 
   render() {
+    // @ts-ignore
     const { chartOptions, hoverData } = this.state;
     console.log(chartOptions);
     return (

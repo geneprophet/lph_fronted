@@ -64,6 +64,10 @@ export default [
         path: '/test',
         component: '@/pages/Test',
       },
+      {
+        path: '/users',
+        component: '@/pages/users',
+      },
     ],
   },
 ];
