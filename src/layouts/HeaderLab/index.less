@@ -1,41 +1,39 @@
 .header {
   //background: url("../../assets/header.jpeg");
-  width: 100% ;
+  width: 100%;
   height: 300px;
   text-align: center;
   //position: relative;
   //
 }
-.header:before{
-  background: url("../../assets/header.jpeg");
-  //filter: blur(2px);
-  //background-size: cover;
-  width: 100% ;
-  height: 300px;
-  content: "";
+.header:before {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;/*-1 可以当背景*/
+  z-index: -1;
+  //filter: blur(2px);
+  //background-size: cover;
+  width: 100%;
+  height: 300px;
+  background: url('../../assets/header.jpeg');
   //-webkit-filter: blur(3px);
   filter: blur(5px);
+  content: ''; /*-1 可以当背景*/
 }
 .logo {
-  width: 200px;
   //height: 20%;
   //border: 1px solid #f4f9f9;
   display: flex;
+  width: 200px;
   //justify-content: center;
   //align-items: center;
   //margin: 10px auto;
   margin-left: 30px;
-
 }
-.text{
+.text {
   position: relative;
-  font-size: 40px;
   margin-top: 20px;
-  font-family: "Arial Black";
   color: #001529;
+  font-size: 40px;
+  font-family: 'Arial Black';
 }
-

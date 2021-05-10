@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './index.less';
 import { Layout, Menu, Breadcrumb } from 'antd';
 const { Header, Content, Footer } = Layout;
-import CarouselAutoplay from '../CarouselAutoplay';
+import HeaderLab from '../HeaderLab';
 import { history } from 'umi';
 import {
   FlagOutlined,
@@ -18,7 +18,7 @@ import {
 } from '@ant-design/icons';
 export default (props) => (
   <div className={styles.container}>
-    <CarouselAutoplay />
+    <HeaderLab />
     <div id="components-layout-demo-fixed">
       <Layout>
         <Header style={{ zIndex: 1, width: '100%' }}>
@@ -80,7 +80,17 @@ export default (props) => (
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
-          Ant Design ©2018 Created by Ant UED
+          <div>
+            © 2021 National Genomics Data Center, China National Center for
+            Bioinformation / Beijing Institute of Genomics, Chinese Academy of
+            Sciences
+          </div>
+          <div>
+            No.1 Beichen West Road, Chaoyang District, Beijing 100101, China
+          </div>
+          <div>
+            Tel: +86 (10) 8409-7340 | Fax: +86 (10) 8409-7200 | ngdc@big.ac.cn
+          </div>
         </Footer>
       </Layout>
     </div>

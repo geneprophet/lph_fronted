@@ -54,12 +54,13 @@ const columns = [
 const Index = ({ users }) => {
   return (
     <div>
-      <Table columns={columns} dataSource={users} />
+      <Table columns={columns} dataSource={users.data} />
     </div>
   );
 };
 
 const mapStateToProps = ({ users }) => {
+  // console.log(state);
   return {
     users,
   };

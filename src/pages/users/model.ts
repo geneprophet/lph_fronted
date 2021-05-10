@@ -1,9 +1,15 @@
 import { Reducer, Effect, Subscription } from 'umi';
+import { getRemoteList } from './service';
+
 interface UserModelType {
   namespace: 'users';
   state: {};
-  reducers: {};
-  effects: {};
+  reducers: {
+    getList: Reducer;
+  };
+  effects: {
+    getRemote: Effect;
+  };
   subscriptions: {
     setup: Subscription;
   };
@@ -12,10 +18,31 @@ interface UserModelType {
 const UserModel: UserModelType = {
   namespace: 'users',
   state: {},
-  reducers: {},
-  effects: {},
+  reducers: {
+    getList(state, { payload }) {
+      return payload;
+    },
+  },
+  effects: {
+    *getRemote(action, { put, call }) {
+      const data = yield call(getRemoteList);
+      console.log(data);
+      yield put({
+        type: 'getList',
+        payload: data,
+      });
+    },
+  },
   subscriptions: {
-    setup({ dispatch, history }) {},
+    setup({ dispatch, history }) {
+      return history.listen((location) => {
+        if (location.pathname === '/users') {
+          dispatch({
+            type: 'getRemote',
+          });
+        }
+      });
+    },
   },
 };
 
