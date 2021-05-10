@@ -20,6 +20,11 @@ export default [
         component: './Exception500',
       },
       {
+        name: '标准列表',
+        path: '/listbasiclist',
+        component: './ListBasicList',
+      },
+      {
         path: '/',
         component: '@/pages/index',
       },

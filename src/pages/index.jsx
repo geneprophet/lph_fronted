@@ -5,8 +5,8 @@ import TableHead from '../components/TableHead/index';
 export default function Page() {
   return (
     <div>
-      {/*<Table />*/}
-      {/*<TableHead />*/}
+      <Table />
+      <TableHead />
       <div className={styles.welcome}>
         Welcome to the Peilin Jia Laboratory for Precision Health and
         Bioinformatics at the Beijing Institute of Genomics, Chinese Academy of

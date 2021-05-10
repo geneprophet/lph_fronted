@@ -40,16 +40,20 @@
     "umi-request": "^1.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.1",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@umijs/preset-ui": "^2.2.9",
     "@umijs/test": "^3.4.14",
+    "babel-loader": "^8.2.2",
     "lint-staged": "^10.0.7",
     "mini-css-extract-plugin": "^1.6.0",
     "prettier": "^2.2.0",
     "react": "17.x",
     "react-dom": "17.x",
     "typescript": "^4.1.2",
+    "webpack": "^5.36.2",
     "yorkie": "^2.0.0"
   }
 }

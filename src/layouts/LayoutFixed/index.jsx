@@ -4,17 +4,19 @@ import { Layout, Menu, Breadcrumb } from 'antd';
 const { Header, Content, Footer } = Layout;
 import CarouselAutoplay from '../CarouselAutoplay';
 import { history } from 'umi';
-import other from '../../../public/other.svg'
 import {
   FlagOutlined,
   HomeFilled,
-  HomeOutlined, MenuOutlined, MoreOutlined,
+  HomeOutlined,
+  MenuOutlined,
+  MoreOutlined,
   PieChartOutlined,
-  ProjectOutlined, SoundOutlined,
+  ProjectOutlined,
+  SoundOutlined,
   TeamOutlined,
-  TrademarkOutlined
-} from "@ant-design/icons";
-export default (props: any) => (
+  TrademarkOutlined,
+} from '@ant-design/icons';
+export default (props) => (
   <div className={styles.container}>
     <CarouselAutoplay />
     <div id="components-layout-demo-fixed">
@@ -55,7 +57,6 @@ export default (props: any) => (
               News & Blog
             </Menu.Item>
             <Menu.Item key="7" onClick={() => props.history.push('/other')}>
-              {/*<img src={other} />*/}
               <MenuOutlined />
               Other
             </Menu.Item>
