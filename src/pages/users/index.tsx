@@ -3,7 +3,8 @@ import { Table, Tag, Space, Popconfirm, Button } from 'antd';
 import { connect, Dispatch, Loading, UserState } from 'umi';
 import UserModal from '@/pages/users/components/UserModal';
 import { SingleUserType } from './data';
-
+import ProTable from '@ant-design/pro-table';
+import { getRemoteList } from './service';
 interface UserPageProps {
   users: UserState;
   dispatch: Dispatch;
@@ -129,16 +130,25 @@ const UsersListPage: FC<UserPageProps> = ({
     setIsModalVisible(true);
     setRecord(undefined);
   };
+  const requestHandler = async () => {
+    const users = await getRemoteList();
+    return {
+      data: users.data,
+      success: true,
+      total: users.meta.total,
+    };
+  };
   return (
     <div>
       <Button type="primary" onClick={addHandler}>
         Add
       </Button>
-      <Table
+      <ProTable
         columns={columns}
         dataSource={users.data}
         rowKey="id"
         loading={userListLoading}
+        request={requestHandler}
       />
       <UserModal
         visible={isModalVisible}
