@@ -1,16 +1,21 @@
 import React, { useState, FC } from 'react';
-import { Table, Tag, Space, Popconfirm, Button } from 'antd';
-import { connect, Dispatch, Loading, UserState } from 'umi';
+import { Table, Tag, Space, Pagination, Popconfirm, Button } from 'antd';
+import { connect, Dispatch, Link, Loading, UserState } from 'umi';
 import UserModal from '@/pages/users/components/UserModal';
 import { SingleUserType } from './data';
-import ProTable from '@ant-design/pro-table';
+import ProTable, { ProColumns } from '@ant-design/pro-table';
 import { getRemoteList } from './service';
+import styles from './index.less';
 interface UserPageProps {
   users: UserState;
   dispatch: Dispatch;
   userListLoading: boolean;
 }
-
+type ProTablesType = {
+  id: number;
+  name: string;
+  create_time: string;
+};
 const UsersListPage: FC<UserPageProps> = ({
   users,
   dispatch,
@@ -88,7 +93,7 @@ const UsersListPage: FC<UserPageProps> = ({
             }}
           >
             Edit
-          </a>{' '}
+          </a>
           &nbsp;&nbsp;
           <Popconfirm
             title="Are you sure to delete this task?"
@@ -104,51 +109,74 @@ const UsersListPage: FC<UserPageProps> = ({
         </span>
       ),
     },
-    // {
-    //   title: 'Tags',
-    //   key: 'tags',
-    //   dataIndex: 'tags',
-    //   render: (tags) => (
-    //     <>
-    //       {tags.map((tag) => {
-    //         let color = tag.length > 5 ? 'geekblue' : 'green';
-    //         if (tag === 'loser') {
-    //           color = 'volcano';
-    //         }
-    //         return (
-    //           <Tag color={color} key={tag}>
-    //             {tag.toUpperCase()}
-    //           </Tag>
-    //         );
-    //       })}
-    //     </>
-    //   ),
-    // },
   ];
 
   const addHandler = () => {
     setIsModalVisible(true);
     setRecord(undefined);
   };
-  const requestHandler = async () => {
-    const users = await getRemoteList();
-    return {
+  const requestHandler = async ({ pageSize, current }) => {
+    const users = await getRemoteList({
+      page: current,
+      per_page: pageSize,
+    });
+    const data = {
       data: users.data,
       success: true,
       total: users.meta.total,
     };
+    console.log(data);
+    return data;
+  };
+  const onChange = (pageNumber, pageSize) => {
+    console.log('Page: ', pageNumber, pageSize);
+  };
+  const paginationHandler = (page: number, pageSize?: number) => {
+    dispatch({
+      type: 'users/getRemote',
+      payload: {
+        page,
+        per_page: pageSize ? pageSize : users.meta.per_page,
+      },
+    });
+  };
+  const sizeChangeHandler = (current: number, size: number) => {
+    dispatch({
+      type: 'users/getRemote',
+      payload: {
+        page: current,
+        per_page: size,
+      },
+    });
   };
   return (
     <div>
       <Button type="primary" onClick={addHandler}>
         Add
       </Button>
+      <Button>
+        <Link to="/home">return to home</Link>
+      </Button>
       <ProTable
         columns={columns}
         dataSource={users.data}
         rowKey="id"
         loading={userListLoading}
-        request={requestHandler}
+        pagination={false}
+        // request={requestHandler}
+        // search={false}
+      />
+      <Pagination
+        className={styles.pagenation}
+        showQuickJumper
+        defaultCurrent={1}
+        total={users.meta.total}
+        pageSize={users.meta.per_page}
+        showSizeChanger
+        showTotal={(total) => `Total ${total} items`}
+        pageSizeOptions={[5, 10, 20, 30]}
+        onChange={paginationHandler}
+        onShowSizeChange={sizeChangeHandler}
       />
       <UserModal
         visible={isModalVisible}
@@ -168,8 +196,6 @@ const mapStateToProps = ({
   users: UserState;
   loading: Loading;
 }) => {
-  console.log(users);
-  console.log(loading);
   return {
     users,
     userListLoading: loading.models.users,

@@ -53,12 +53,12 @@ export default [
         component: '@/pages/News',
       },
       {
-        path: '/other',
-        component: '@/pages/Other',
+        path: '/contact',
+        component: '@/pages/Contact',
       },
       {
-        path: '/high',
-        component: '@/pages/Highcharts',
+        path: '/high/:chart',
+        component: '@/pages/Highcharts/[index]',
       },
       {
         path: '/test',

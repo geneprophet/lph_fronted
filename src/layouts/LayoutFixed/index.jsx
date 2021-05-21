@@ -16,6 +16,7 @@ import {
   TeamOutlined,
   TrademarkOutlined,
 } from '@ant-design/icons';
+import { Link } from 'umi';
 export default (props) => (
   <div className={styles.container}>
     <HeaderLab />
@@ -56,9 +57,9 @@ export default (props) => (
               <SoundOutlined />
               News & Blog
             </Menu.Item>
-            <Menu.Item key="7" onClick={() => props.history.push('/other')}>
+            <Menu.Item key="7" onClick={() => props.history.push('/contact')}>
               <MenuOutlined />
-              Other
+              Contact
             </Menu.Item>
           </Menu>
         </Header>

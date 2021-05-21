@@ -16,7 +16,7 @@ const errorHandler = function (error: any) {
     message.error('Network error');
   }
 
-  // throw error; // If throw. The error will continue to be thrown.
+  throw error; // If throw. The error will continue to be thrown.
   // return {some: 'data'}; If return, return the value as a return. If you don't write it is equivalent to return undefined, you can judge whether the response has a value when processing the result.
   // return {some: 'data'};
 };
@@ -24,8 +24,14 @@ const errorHandler = function (error: any) {
 // 1. Unified processing
 const extendRequest = extend({ errorHandler });
 
-export const getRemoteList = async () => {
-  return extendRequest('http://public-api-v1.aspirantzhang.com/users')
+export const getRemoteList = async ({ page, per_page }) => {
+  return extendRequest(`http://public-api-v1.aspirantzhang.com/users`, {
+    method: 'get',
+    params: {
+      page: page,
+      per_page: per_page,
+    },
+  })
     .then(function (response) {
       return response;
     })

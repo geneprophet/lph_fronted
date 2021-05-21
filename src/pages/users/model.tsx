@@ -45,8 +45,8 @@ const UserModel: UserModelType = {
     },
   },
   effects: {
-    *getRemote(action, { put, call }) {
-      const data = yield call(getRemoteList);
+    *getRemote({ payload: { page, per_page } }, { put, call }) {
+      const data = yield call(getRemoteList, { page, per_page });
       if (data) {
         yield put({
           type: 'getList',
@@ -77,12 +77,19 @@ const UserModel: UserModelType = {
         message.success('add falied');
       }
     },
-    *delete({ payload: { id } }, { put, call }) {
+    *delete({ payload: { id } }, { put, call, select }) {
       const data = yield call(deleteRecord, { id });
       if (data) {
         message.success('deltete success');
+        const { page, per_page } = yield select(
+          (state: any) => state.users.meta,
+        );
         yield put({
           type: 'getRemote',
+          payload: {
+            page,
+            per_page,
+          },
         });
       } else {
         message.success('deltete falied');
@@ -95,6 +102,10 @@ const UserModel: UserModelType = {
         if (location.pathname === '/users') {
           dispatch({
             type: 'getRemote',
+            payload: {
+              page: 1,
+              per_page: 5,
+            },
           });
         }
       });
