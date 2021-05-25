@@ -68,6 +68,14 @@ export default [
         path: '/users',
         component: '@/pages/users',
       },
+      {
+        path: '/network',
+        component: '@/pages/Network',
+      },
+      {
+        path: '/pie',
+        component: '@/pages/Pie',
+      },
     ],
   },
 ];
