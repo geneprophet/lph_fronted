@@ -13,6 +13,9 @@ const Index = ({
 }) => {
   const [state, setState] = useState({
     chartOptions: {
+      credits: {
+        enabled: false,
+      },
       title: {
         text: '桑吉图',
       },

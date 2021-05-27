@@ -5,21 +5,6 @@ export default [
     component: '@/layouts/LayoutFixed',
     routes: [
       {
-        name: '403',
-        path: '/exception403',
-        component: './Exception403',
-      },
-      {
-        name: '404',
-        path: '/exception404',
-        component: './Exception404',
-      },
-      {
-        name: '500',
-        path: '/exception500',
-        component: './Exception500',
-      },
-      {
         name: '标准列表',
         path: '/listbasiclist',
         component: './ListBasicList',
@@ -69,12 +54,27 @@ export default [
         component: '@/pages/users',
       },
       {
-        path: '/network',
-        component: '@/pages/Network',
+        path: '/network/:chart',
+        component: '@/pages/Network/[index]',
       },
       {
         path: '/pie',
         component: '@/pages/Pie',
+      },
+      {
+        name: '403',
+        path: '/exception403',
+        component: './Exception403',
+      },
+      {
+        name: '404',
+        path: '/exception404',
+        component: './Exception404',
+      },
+      {
+        name: '500',
+        path: '/exception500',
+        component: './Exception500',
       },
     ],
   },
